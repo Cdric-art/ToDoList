@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A76F965F2A471E6E005D3D70 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76F965E2A471E6E005D3D70 /* HeaderView.swift */; };
 		A7B9B2382A449297000590FE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A7B9B2372A449297000590FE /* GoogleService-Info.plist */; };
 		A7ED74C02A4478FC00461406 /* ToDoListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7ED74BF2A4478FC00461406 /* ToDoListApp.swift */; };
 		A7ED74C22A4478FC00461406 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7ED74C12A4478FC00461406 /* MainView.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A76F965E2A471E6E005D3D70 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		A7B9B2372A449297000590FE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A7ED74BC2A4478FC00461406 /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7ED74BF2A4478FC00461406 /* ToDoListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListApp.swift; sourceTree = "<group>"; };
@@ -71,6 +73,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A76F965D2A471E56005D3D70 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				A76F965E2A471E6E005D3D70 /* HeaderView.swift */,
+			);
+			path = SubViews;
+			sourceTree = "<group>";
+		};
 		A7ED74B32A4478FC00461406 = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +123,7 @@
 		A7ED74CE2A44798D00461406 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A76F965D2A471E56005D3D70 /* SubViews */,
 				A7ED74C12A4478FC00461406 /* MainView.swift */,
 				A7ED74DC2A447F8500461406 /* ProfileView.swift */,
 				A7ED74DE2A447FA500461406 /* ToDolListView.swift */,
@@ -227,6 +238,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7ED74E32A447FC700461406 /* LoginView.swift in Sources */,
+				A76F965F2A471E6E005D3D70 /* HeaderView.swift in Sources */,
 				A7ED74C22A4478FC00461406 /* MainView.swift in Sources */,
 				A7ED74F72A4480FA00461406 /* RegisterViewViewModel.swift in Sources */,
 				A7ED74ED2A4480A500461406 /* MainViewViewModel.swift in Sources */,
