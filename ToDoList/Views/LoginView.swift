@@ -18,13 +18,21 @@ struct LoginView: View {
                 
                 // Login Form
                 Form {
+                    if !viewModel.errorMessage.isEmpty {
+                        Text(viewModel.errorMessage)
+                            .foregroundColor(.red)
+                            .font(.caption)
+                    }
+                    
                     TextField("Email Address", text: $viewModel.email)
                         .autocorrectionDisabled()
                         .textInputAutocapitalization(.never)
                     SecureField("Password", text: $viewModel.password)
                     
                     TLButton(title: "Log in", backgroundColor: .blue, action: {
-                        // Attempt log in
+                        Task {
+                            await viewModel.login()
+                        }
                     })
                 }
                 .multilineTextAlignment(.center)
