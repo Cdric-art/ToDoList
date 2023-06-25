@@ -14,9 +14,7 @@ class LoginViewViewModel: ObservableObject {
     @Published var errorMessage: String = ""
     
     func login() async {
-        guard validate() else {
-            return
-        }
+        guard validate() else { return }
         
         do {
             try await Auth.auth().signIn(withEmail: email, password: password)

@@ -7,6 +7,9 @@
 
 import Foundation
 
-struct User: Decodable {
-    
+struct User: Codable {
+    let id: String
+    let name: String
+    let emailAddress: String
+    let joined: TimeInterval
 }

@@ -25,7 +25,7 @@ struct RegisterView: View {
                 SecureField("Password", text: $viewModel.password)
 
                 TLButton(title: "Create account", backgroundColor: .green, action: {
-                    // Attempt register
+                    viewModel.register()
                 })
             }
             .multilineTextAlignment(.center)
