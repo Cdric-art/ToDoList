@@ -8,22 +8,23 @@
 import Foundation
 import FirebaseAuth
 import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 class ToDoListItemViewViewModel: ObservableObject {
     
-    func toggleIsDone(item: ToDoListItem) {
-        var itemCopy = item
-        itemCopy.setDone(!item.isDone)
-        
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        
-        let db = Firestore.firestore()
-        db.collection("users")
-            .document(uid)
-            .collection("todos")
-            .document(itemCopy.id)
-            .setData(itemCopy.asDictionary())
-        
+    func toggleIsDone(item: ToDoListItem) async throws {
+        do {
+            var itemCopy = item
+            itemCopy.setDone(!item.isDone)
+            
+            guard let uid = Auth.auth().currentUser?.uid else { return }
+            
+            let encodeItem = try Firestore.Encoder().encode(itemCopy)
+            try await Firestore.firestore().collection("users").document(uid).collection("todos").document(item.id).setData(encodeItem)
+
+        } catch {
+            print(error.localizedDescription)
+        }
     }
     
 }

@@ -8,15 +8,15 @@
 import Foundation
 import FirebaseAuth
 
+@MainActor
 class LoginViewViewModel: ObservableObject {
     @Published var email: String = ""
     @Published var password: String = ""
     @Published var errorMessage: String = ""
     
-    func login() async {
-        guard validate() else { return }
-        
+    func login() async throws {
         do {
+            guard validate() else { return }
             try await Auth.auth().signIn(withEmail: email, password: password)
         } catch {
             errorMessage = error.localizedDescription

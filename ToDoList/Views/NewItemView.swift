@@ -29,8 +29,10 @@ struct NewItemView: View {
                 // Button
                 TLButton(title: "Save", backgroundColor: .pink) {
                     if viewModel.canSave {
-                        viewModel.save()
-                        newItemPresented.toggle()
+                        Task {
+                            try await viewModel.save()
+                            newItemPresented.toggle()
+                        }
                     } else {
                         viewModel.showAlert.toggle()
                     }

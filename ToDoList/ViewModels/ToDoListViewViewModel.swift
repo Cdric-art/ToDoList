@@ -19,14 +19,7 @@ class ToDoListViewViewModel: ObservableObject {
     
     /// Delete ToDo item
     /// - Parameter id: ToDo id
-    func delete(id: String) {
-        
-        let db = Firestore.firestore()
-        
-        db.collection("users")
-            .document(userId)
-            .collection("todos")
-            .document(id)
-            .delete()
+    func delete(id: String) async throws {
+        try await Firestore.firestore().collection("users").document(userId).collection("todos").document(id).delete()
     }
 }

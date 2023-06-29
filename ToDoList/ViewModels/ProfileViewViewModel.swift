@@ -9,32 +9,23 @@ import Foundation
 import FirebaseAuth
 import FirebaseFirestore
 
+@MainActor
 class ProfileViewViewModel: ObservableObject {
     @Published var user: User?
     
-    func fetchUser() {
+    func fetchUser() async {
         guard let userId = Auth.auth().currentUser?.uid else { return }
         
-        let db = Firestore.firestore()
-        db.collection("users").document(userId).getDocument { [weak self] snapshot, error in
-            guard let data = snapshot?.data(), error == nil else { return }
-            
-            DispatchQueue.main.async {
-                self?.user = User(
-                    id: data["id"] as? String ?? "",
-                    name: data["name"] as? String ?? "",
-                    emailAddress: data["emailAddress"] as? String ?? "",
-                    joined: data["dueDate"] as? TimeInterval ?? Date().timeIntervalSince1970
-                )
-            }
-        }
+        guard let snapshot = try? await Firestore.firestore().collection("users").document(userId).getDocument() else { return }
+                
+        self.user = try? snapshot.data(as: User.self)
     }
     
     func logOut() {
         do {
             try Auth.auth().signOut()
         } catch {
-            print(error)
+            print(error.localizedDescription)
         }
     }
 }

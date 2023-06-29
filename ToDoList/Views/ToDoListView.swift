@@ -24,7 +24,9 @@ struct ToDoListView: View {
                     ToDoListItemView(item: item)
                         .swipeActions {
                             Button {
-                                viewModel.delete(id: item.id)
+                                Task {
+                                    try await viewModel.delete(id: item.id)
+                                }
                             } label: {
                                 Label("Delete", systemImage: "trash")
                             }

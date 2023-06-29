@@ -31,7 +31,7 @@ struct LoginView: View {
                     
                     TLButton(title: "Log in", backgroundColor: .blue, action: {
                         Task {
-                            await viewModel.login()
+                            try await viewModel.login()
                         }
                     })
                 }
