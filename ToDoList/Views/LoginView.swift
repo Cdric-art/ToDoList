@@ -34,6 +34,7 @@ struct LoginView: View {
                             try await viewModel.login()
                         }
                     })
+                    .opacity(viewModel.password.count < 6 ? 0.6 : 1)
                 }
                 .multilineTextAlignment(.center)
                 .offset(y: -50)

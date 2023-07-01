@@ -29,6 +29,7 @@ struct RegisterView: View {
                         try await viewModel.createUser()
                     }
                 })
+                .opacity(viewModel.password.count < 6 ? 0.6 : 1)
             }
             .multilineTextAlignment(.center)
             .offset(y: -50)
